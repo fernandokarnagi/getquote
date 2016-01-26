@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://schemas.gel.com/WSDL/service/GIX-TravelQuote-I/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://schemas.gel.com/GIX-TravelQuote-I" name="GIXTravelQuoteIPortTypeService" targetNamespace="http://schemas.gel.com/WSDL/service/GIX-TravelQuote-I/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.gel.com/WSDL/service/GIX-TravelQuote-I/" version="1.0">
+
+  <xs:element name="GetQuoteFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="GetQuoteFault" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.gel.com/GIX-TravelQuote-I" elementFormDefault="qualified" targetNamespace="http://schemas.gel.com/GIX-TravelQuote-I" version="1.0">
+
+  <xs:element name="Destination" nillable="true" type="xs:string"/>
+
+  <xs:element name="PlanDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tns:PlanInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PlanInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PlanName" type="xs:string"/>
+        <xs:element name="Premium" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RqDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TripType" type="xs:string"/>
+        <xs:element name="DepartDate" type="xs:date"/>
+        <xs:element name="ReturnDate" type="xs:date"/>
+        <xs:element name="DestinationList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Destination" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AreaOfTravel" type="xs:int"/>
+        <xs:element name="CoverType" type="xs:string"/>
+        <xs:element name="NumOfAdults" type="xs:int"/>
+        <xs:element name="NumOfChild" type="xs:int"/>
+        <xs:element name="CampaignCode" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RsDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tns:PlanDetails"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetQuoteResponse">
+    <wsdl:part element="ns1:RsDetail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetQuote">
+    <wsdl:part element="ns1:RqDetail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetQuoteFault_Exception">
+    <wsdl:part element="tns:GetQuoteFault" name="GetQuoteFault_Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GIX-TravelQuote-I-PortType">
+    <wsdl:operation name="GetQuote">
+      <wsdl:input message="tns:GetQuote" name="GetQuote">
+    </wsdl:input>
+      <wsdl:output message="tns:GetQuoteResponse" name="GetQuoteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:GetQuoteFault_Exception" name="GetQuoteFault_Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GIXTravelQuoteIPortTypeServiceSoapBinding" type="tns:GIX-TravelQuote-I-PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetQuote">
+      <soap:operation soapAction="http://schemas.gel.com/WSDL/service/GIX-TravelQuote-I/GetQuote" style="document"/>
+      <wsdl:input name="GetQuote">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetQuoteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="GetQuoteFault_Exception">
+        <soap:fault name="GetQuoteFault_Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GIXTravelQuoteIPortTypeService">
+    <wsdl:port binding="tns:GIXTravelQuoteIPortTypeServiceSoapBinding" name="GIX-TravelQuote-I-PortTypePort">
+      <soap:address location="https://webapi1.greateasternlife.com/GIX-TravelQuote-I"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+        "TripType": {
+          "id": "http://jsonschema.net/RqDetail/TripType",
+          "type": "string"
+        },
+        "DepartDate": {
+          "id": "http://jsonschema.net/RqDetail/DepartDate",
+          "type": "string"
+        },
+        "ReturnDate": {
+          "id": "http://jsonschema.net/RqDetail/ReturnDate",
+          "type": "string"
+        },
+        "DestinationList": {
+          "id": "http://jsonschema.net/RqDetail/DestinationList",
+          "type": "object",
+          "properties": {
+            "Destination": {
+              "id": "http://jsonschema.net/RqDetail/DestinationList/Destination",
+              "type": "array",
+              "items": [
+                {
+                  "id": "http://jsonschema.net/RqDetail/DestinationList/Destination/0",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "AreaOfTravel": {
+          "id": "http://jsonschema.net/RqDetail/AreaOfTravel",
+          "type": "integer"
+        },
+        "CoverType": {
+          "id": "http://jsonschema.net/RqDetail/CoverType",
+          "type": "string"
+        },
+        "NumOfAdults": {
+          "id": "http://jsonschema.net/RqDetail/NumOfAdults",
+          "type": "integer"
+        },
+        "NumOfChild": {
+          "id": "http://jsonschema.net/RqDetail/NumOfChild",
+          "type": "integer"
+        },
+        "CampaignCode": {
+          "id": "http://jsonschema.net/RqDetail/CampaignCode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "TripType",
+        "DepartDate",
+        "ReturnDate",
+        "DestinationList",
+        "AreaOfTravel",
+        "CoverType",
+        "NumOfAdults",
+        "NumOfChild",
+        "CampaignCode"
+      ]
+}

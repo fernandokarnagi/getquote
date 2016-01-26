@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="fernando" created="Wed Oct 14 21:51:11 SGT 2015" description="Xml&lt;RsDetail&gt; To JSON" guiVersion="3.4.4.P" id="1444831487882" licenseCode="Unlicensed" licenseType="Unknown" modified="Wed Oct 14 21:51:11 SGT 2015" modifiedBy="fernando" name="Xml_RsDetail__To_JSON" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RsDetail/ns0:PlanDetails/ns0:PlanInfo" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="3669b1ef-56a0-4edf-9fd4-c14872345ccb" _parent_id="__parent_id" _type="Input" id="ac37cf3b-021a-4b80-a355-416f48b198ce">
+<Record fieldDelimiter="," name="PlanInfo" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __implementationClass="java.lang.String" __index="0" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RsDetail/ns0:PlanDetails/ns0:PlanInfo/ns0:PlanName" containerType="SINGLE" label="ns0:PlanName" name="ns0_PlanName" type="string"/>
+<Field __implementationClass="java.math.BigDecimal" __index="1" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RsDetail/ns0:PlanDetails/ns0:PlanInfo/ns0:Premium" containerType="SINGLE" label="ns0:Premium" name="ns0_Premium" type="decimal"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/RsDetail/PlanDetails/PlanInfo" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="10d5e118-cee1-4ed1-9739-7b1447508504" _parent_id="__parent_id" _type="Output" id="4246e024-4fc5-41cb-8ba0-eb9067888448">
+<Record fieldDelimiter="," name="PlanInfo" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __index="0" __sourcePath="{}/RsDetail/PlanDetails/PlanInfo/PlanName" containerType="SINGLE" label="PlanName" name="PlanName" type="string"/>
+<Field __index="1" __sourcePath="{}/RsDetail/PlanDetails/PlanInfo/Premium" containerType="SINGLE" label="Premium" name="Premium" type="decimal"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RsDetail" _dataStructure="OBJECT" _id="__id" _type="Input" id="3669b1ef-56a0-4edf-9fd4-c14872345ccb">
+<Record fieldDelimiter="," name="RsDetail" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/RsDetail" _dataStructure="OBJECT" _id="__id" _type="Output" id="10d5e118-cee1-4ed1-9739-7b1447508504">
+<Record fieldDelimiter="," name="RsDetail" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" guiName="Foreach 'ns0:PlanInfo' -&gt; 'PlanInfo'" guiX="460" guiY="120" id="FOREACH_NS0_PLAN_INFO_PLAN_INFO" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+output.__parent_id = input.__parent_id;
+//END -> DO NOT REMOVE
+output.PlanName = input.ns0_PlanName;
+output.Premium = input.ns0_Premium;]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'ns0:RsDetail' -&gt; 'RsDetail'" guiX="460" guiY="20" id="FOREACH_NS0_RS_DETAIL_RS_DETAIL" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+]]></attr>
+</Node>
+<Node cacheInMemory="true" charset="UTF-8" enabled="enabled" fileURL="dict:outputPayload" guiName="JSON WRITER" guiX="900" guiY="20" id="JSON_WRITER0" type="JSON_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<RsDetail xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <PlanDetails>
+    <clover:collection clover:name="PlanInfo">
+      <item clover:inPort="1" clover:key="__parent_id" clover:parentKey="__id">
+        <PlanName>$1.PlanName</PlanName>
+        <Premium>$1.Premium</Premium>
+      </item>
+    </clover:collection>
+  </PlanDetails>
+</RsDetail>]]></attr>
+<attr name="_data_format"><![CDATA[JSON]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="XML READER" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;http://schemas.gel.com/GIX-TravelQuote-I&quot;" outPort="0" sequenceField="__id" xpath="/ns0:RsDetail">
+  <Context generatedKey="__parent_id" namespacePaths="ns0=&quot;http://schemas.gel.com/GIX-TravelQuote-I&quot;" outPort="1" parentKey="__id" sequenceField="__id" xpath="ns0:PlanDetails/ns0:PlanInfo">
+    <Mapping cloverField="ns0_PlanName" namespacePaths="ns0=&quot;http://schemas.gel.com/GIX-TravelQuote-I&quot;" trim="true" xpath="ns0:PlanName"/>
+    <Mapping cloverField="ns0_Premium" namespacePaths="ns0=&quot;http://schemas.gel.com/GIX-TravelQuote-I&quot;" trim="true" xpath="ns0:Premium"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_NS0_PLAN_INFO_PLAN_INFO:0" guiBendpoints="" id="Edge3" inPort="Port 1 (in)" metadata="4246e024-4fc5-41cb-8ba0-eb9067888448" outPort="Port 0 (out)" toNode="JSON_WRITER0:1"/>
+<Edge debugMode="true" fromNode="FOREACH_NS0_RS_DETAIL_RS_DETAIL:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="10d5e118-cee1-4ed1-9739-7b1447508504" outPort="Port 0 (out)" toNode="JSON_WRITER0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="3669b1ef-56a0-4edf-9fd4-c14872345ccb" outPort="Port 0 (out)" toNode="FOREACH_NS0_RS_DETAIL_RS_DETAIL:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:1" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="ac37cf3b-021a-4b80-a355-416f48b198ce" outPort="Port 1 (out)" toNode="FOREACH_NS0_PLAN_INFO_PLAN_INFO:0"/>
+</Phase>
+</Graph>

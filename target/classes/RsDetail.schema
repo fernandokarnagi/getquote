@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+      "PlanName": {
+         "id": "http://jsonschema.net/RsDetail/PlanDetails/PlanInfo/PlanName",
+         "type": "string"
+      },
+      "Premium": {
+          "id": "http://jsonschema.net/RsDetail/PlanDetails/PlanInfo/Premium",
+          "type": "number"
+      }
+  },
+  "required": [
+      "PlanName",
+      "Premium"
+  ]
+}

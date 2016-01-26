@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.7.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:request-config name="HTTP_Request_Configuration_OpenWeather" host="api.openweathermap.org" port="80" doc:name="HTTP Request Configuration"/>
+    <sub-flow name="SubFlow_Weather_Current">
+        <logger message="Get weather #[message]" level="INFO" doc:name="Logger "/>
+        <expression-component doc:name="Expression"><![CDATA[var reqPath =  message.inboundProperties.'http.request.path';
+var reqPathArr = reqPath.split('/');
+var location = reqPathArr[3];
+flowVars.location = location;]]></expression-component>
+        <set-variable variableName="q" value="#[flowVars.location]" doc:name="Variable_Set_Country"/>
+        <set-variable variableName="appid" value="ba8f65ab549ace4133122a44516f0888" doc:name="Variable_Set_APIID"/>
+        <logger message="Requesting Weather API with this flowvars: #[flowVars]" level="INFO" doc:name="Logger"/>
+        <http:request config-ref="HTTP_Request_Configuration_OpenWeather" path="/data/2.5/weather" method="GET" doc:name="HTTP">
+            <http:request-builder>
+                <http:query-param paramName="q" value="#[flowVars.q]"/>
+                <http:query-param paramName="appid" value="#[flowVars.appid]"/>
+            </http:request-builder>
+        </http:request>
+    </sub-flow>
+    <sub-flow name="SubFlow_Weather_Forecast">
+        <logger message="Get weather forecast" level="INFO" doc:name="Logger"/>
+        <expression-component doc:name="Expression"><![CDATA[var reqPath =  message.inboundProperties.'http.request.path';
+var reqPathArr = reqPath.split('/');
+var location = reqPathArr[3];
+flowVars.location = location;]]></expression-component>
+        <set-variable variableName="q" value="#[flowVars.location]" doc:name="Variable_Set_Country"/>
+        <set-variable variableName="appid" value="ba8f65ab549ace4133122a44516f0888" doc:name="Variable_Set_APIID"/>
+        <logger message="Requesting Weather API with this flowvars: #[flowVars]" level="INFO" doc:name="Logger"/>
+        <http:request config-ref="HTTP_Request_Configuration_OpenWeather" path="/data/2.5/forecast" method="GET" doc:name="HTTP">
+            <http:request-builder>
+                <http:query-param paramName="q" value="#[flowVars.q]"/>
+                <http:query-param paramName="appid" value="#[flowVars.appid]"/>
+            </http:request-builder>
+        </http:request>
+    </sub-flow>
+</mule>

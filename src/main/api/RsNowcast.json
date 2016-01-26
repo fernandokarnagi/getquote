@@ -1,0 +1,42 @@
+{
+   "coord":{
+      "lon":139.75,
+      "lat":35.69
+   },
+   "weather":[
+      {
+         "id":802,
+         "main":"Clouds",
+         "description":"scattered clouds",
+         "icon":"03n"
+      }
+   ],
+   "base":"stations",
+   "main":{
+      "temp":285.06,
+      "pressure":1022,
+      "humidity":44,
+      "temp_min":283.15,
+      "temp_max":287.15
+   },
+   "visibility":10000,
+   "wind":{
+      "speed":4.6,
+      "deg":10
+   },
+   "clouds":{
+      "all":40
+   },
+   "dt":1445814000,
+   "sys":{
+      "type":1,
+      "id":7619,
+      "message":0.0217,
+      "country":"JP",
+      "sunrise":1445720192,
+      "sunset":1445759579
+   },
+   "id":1861060,
+   "name":"Japan",
+   "cod":200
+}

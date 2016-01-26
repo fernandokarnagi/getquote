@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "city": {
+      "id": "city",
+      "type": "object",
+      "properties": {
+        "id": {
+          "id": "id",
+          "type": "integer"
+        },
+        "name": {
+          "id": "name",
+          "type": "string"
+        },
+        "coord": {
+          "id": "coord",
+          "type": "object",
+          "properties": {
+            "lon": {
+              "id": "lon",
+              "type": "number"
+            },
+            "lat": {
+              "id": "lat",
+              "type": "number"
+            }
+          }
+        },
+        "country": {
+          "id": "country",
+          "type": "string"
+        },
+        "population": {
+          "id": "population",
+          "type": "integer"
+        }
+      }
+    },
+    "cod": {
+      "id": "cod",
+      "type": "string"
+    },
+    "message": {
+      "id": "message",
+      "type": "number"
+    },
+    "cnt": {
+      "id": "cnt",
+      "type": "integer"
+    },
+    "list": {
+      "id": "list",
+      "type": "array",
+      "items": {
+        "id": "auto-generated-schema-723"
+      }
+    }
+  }
+}

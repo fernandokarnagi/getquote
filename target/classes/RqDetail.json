@@ -1,0 +1,17 @@
+{
+    "TripType": "business",
+    "DepartDate": "2014-01-01T00:00:00.0002Z",
+    "ReturnDate": "2014-01-11T00:00:00.0002Z",
+    "DestinationList": {
+      "Destination": [
+        "Paris",
+        "London",
+        "Singapore"
+      ]
+    },
+    "AreaOfTravel": 11,
+    "CoverType": "comprehensive",
+    "NumOfAdults": 2,
+    "NumOfChild": 2,
+    "CampaignCode": "abcd"
+}

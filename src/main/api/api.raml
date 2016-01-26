@@ -1,0 +1,42 @@
+#%RAML 0.8
+title: Get Quote API
+baseUri: http://gel-getquote-api.cloudhub.io/
+version: 1.0
+
+/quote:
+  post:
+    description: Get quote for travel insurance
+    body:
+      application/json:
+        schema: !include RqDetail.schema
+        example: !include RqDetail.json
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include RsDetail.schema
+            example: !include RsDetail.json
+  options:
+    description: Allow options
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include RsDetail.json
+/weather:
+  /{location}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include RsNowcast.json
+              schema: !include RsNowcast.schema
+    /forecast:
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include RsForecast.json
+                schema: !include RsForecast.schema

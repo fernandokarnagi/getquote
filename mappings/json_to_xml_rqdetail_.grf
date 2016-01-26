@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="fernando" created="Wed Oct 14 21:51:11 SGT 2015" description="Json To Xml&lt;RqDetail&gt;" guiVersion="3.4.4.P" id="1444831250039" licenseCode="Unlicensed" licenseType="Unknown" modified="Wed Oct 14 21:51:11 SGT 2015" modifiedBy="fernando" name="Json_To_Xml_RqDetail_" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="5f1fabee-2490-4ef5-9c0e-675584222bec">
+<Record fieldDelimiter="," name="object" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __implementationClass="java.lang.Integer" __index="0" __sourcePath="{}/object/AreaOfTravel" containerType="SINGLE" label="AreaOfTravel" name="AreaOfTravel" type="integer"/>
+<Field __implementationClass="java.lang.String" __index="1" __sourcePath="{}/object/CampaignCode" containerType="SINGLE" label="CampaignCode" name="CampaignCode" type="string"/>
+<Field __implementationClass="java.lang.String" __index="2" __sourcePath="{}/object/CoverType" containerType="SINGLE" label="CoverType" name="CoverType" type="string"/>
+<Field __implementationClass="java.lang.String" __index="3" __sourcePath="{}/object/DepartDate" containerType="SINGLE" label="DepartDate" name="DepartDate" type="string"/>
+<Field __index="4" __sourcePath="{}/object/DestinationList/Destination" containerType="list" label="Destination" name="Destination" type="string"/>
+<Field __implementationClass="java.lang.Integer" __index="5" __sourcePath="{}/object/NumOfAdults" containerType="SINGLE" label="NumOfAdults" name="NumOfAdults" type="integer"/>
+<Field __implementationClass="java.lang.Integer" __index="6" __sourcePath="{}/object/NumOfChild" containerType="SINGLE" label="NumOfChild" name="NumOfChild" type="integer"/>
+<Field __implementationClass="java.lang.String" __index="7" __sourcePath="{}/object/ReturnDate" containerType="SINGLE" label="ReturnDate" name="ReturnDate" type="string"/>
+<Field __implementationClass="java.lang.String" __index="8" __sourcePath="{}/object/TripType" containerType="SINGLE" label="TripType" name="TripType" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail" _dataStructure="OBJECT" _id="__id" _type="Output" id="9f8f09b4-6c97-4461-9783-f93fce0b7e17">
+<Record fieldDelimiter="," name="RqDetail" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __implementationClass="java.lang.String" __index="0" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:TripType" containerType="SINGLE" label="ns0:TripType" name="ns0_TripType" type="string"/>
+<Field __implementationClass="java.util.Date" __index="1" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:DepartDate" containerType="SINGLE" label="ns0:DepartDate" name="ns0_DepartDate" type="date"/>
+<Field __implementationClass="java.util.Date" __index="2" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:ReturnDate" containerType="SINGLE" label="ns0:ReturnDate" name="ns0_ReturnDate" type="date"/>
+<Field __index="3" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:DestinationList/ns0:Destination" containerType="list" label="ns0:Destination" name="ns0_Destination" type="string"/>
+<Field __implementationClass="java.lang.Integer" __index="4" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:AreaOfTravel" containerType="SINGLE" label="ns0:AreaOfTravel" name="ns0_AreaOfTravel" type="integer"/>
+<Field __implementationClass="java.lang.String" __index="5" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:CoverType" containerType="SINGLE" label="ns0:CoverType" name="ns0_CoverType" type="string"/>
+<Field __implementationClass="java.lang.Integer" __index="6" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:NumOfAdults" containerType="SINGLE" label="ns0:NumOfAdults" name="ns0_NumOfAdults" type="integer"/>
+<Field __implementationClass="java.lang.Integer" __index="7" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:NumOfChild" containerType="SINGLE" label="ns0:NumOfChild" name="ns0_NumOfChild" type="integer"/>
+<Field __implementationClass="java.lang.String" __index="8" __sourcePath="{http://schemas.gel.com/GIX-TravelQuote-I=ns0}/ns0:RqDetail/ns0:CampaignCode" containerType="SINGLE" label="ns0:CampaignCode" name="ns0_CampaignCode" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="XML WRITER" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:element clover:name="ns0:RqDetail" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" xmlns:ns0="http://schemas.gel.com/GIX-TravelQuote-I" clover:inPort="0">
+  <clover:element clover:name="ns0:TripType">$0.ns0_TripType</clover:element>
+  <clover:element clover:name="ns0:DepartDate">$0.ns0_DepartDate</clover:element>
+  <clover:element clover:name="ns0:ReturnDate">$0.ns0_ReturnDate</clover:element>
+  <clover:element clover:name="ns0:DestinationList">
+    <clover:element clover:name="ns0:Destination">$0.ns0_Destination</clover:element>
+  </clover:element>
+  <clover:element clover:name="ns0:AreaOfTravel">$0.ns0_AreaOfTravel</clover:element>
+  <clover:element clover:name="ns0:CoverType">$0.ns0_CoverType</clover:element>
+  <clover:element clover:name="ns0:NumOfAdults">$0.ns0_NumOfAdults</clover:element>
+  <clover:element clover:name="ns0:NumOfChild">$0.ns0_NumOfChild</clover:element>
+  <clover:element clover:name="ns0:CampaignCode">$0.ns0_CampaignCode</clover:element>
+</clover:element>]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'ns0:RqDetail'" guiX="460" guiY="20" id="FOREACH_OBJECT_NS0_RQ_DETAIL" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.ns0_AreaOfTravel = input.AreaOfTravel;
+output.ns0_CampaignCode = input.CampaignCode;
+output.ns0_CoverType = input.CoverType;
+output.ns0_DepartDate = str2date(input.DepartDate, "yyyy-MM-dd");
+output.ns0_Destination = input.Destination;
+output.ns0_NumOfAdults = input.NumOfAdults;
+output.ns0_NumOfChild = input.NumOfChild;
+output.ns0_ReturnDate = str2date(input.ReturnDate, "yyyy-MM-dd");
+output.ns0_TripType = input.TripType;]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="JSON READER" guiX="20" guiY="20" id="JSON_READER0" type="JSON_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context xpath="/root">
+  <Context outPort="0" sequenceField="__id" xpath="object">
+    <Mapping cloverField="AreaOfTravel" trim="true" xpath="AreaOfTravel"/>
+    <Mapping cloverField="CampaignCode" trim="true" xpath="CampaignCode"/>
+    <Mapping cloverField="CoverType" trim="true" xpath="CoverType"/>
+    <Mapping cloverField="DepartDate" trim="true" xpath="DepartDate"/>
+    <Mapping cloverField="Destination" trim="true" xpath="DestinationList/Destination"/>
+    <Mapping cloverField="NumOfAdults" trim="true" xpath="NumOfAdults"/>
+    <Mapping cloverField="NumOfChild" trim="true" xpath="NumOfChild"/>
+    <Mapping cloverField="ReturnDate" trim="true" xpath="ReturnDate"/>
+    <Mapping cloverField="TripType" trim="true" xpath="TripType"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JSON]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_NS0_RQ_DETAIL:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="9f8f09b4-6c97-4461-9783-f93fce0b7e17" outPort="Port 0 (out)" toNode="EXT_XML_WRITER0:0"/>
+<Edge debugMode="true" fromNode="JSON_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5f1fabee-2490-4ef5-9c0e-675584222bec" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_NS0_RQ_DETAIL:0"/>
+</Phase>
+</Graph>
